@@ -1,0 +1,27 @@
+#!/usr/bin/env batchflow
+<?xml version="1.0"?>
+<Document>
+  <Network type="subnet" name="MAIN">
+    <Node name="node_Constant_1" type="Constant" x="100" y="170">
+      <Parameter name="VALUE" type="object" value="&lt;Vector&lt;float&gt; 0.5 2.0&gt;" description="The value"/>
+    </Node>
+    <Node name="node_Constant_2" type="Constant" x="100" y="100">
+      <Parameter name="VALUE" type="float" value="3" description="The value"/>
+    </Node>
+    <Node name="node_PyCodeExecutor3_1" type="PyCodeExecutor3" x="340" y="170">
+      <Parameter name="DIRECTORY_NAME" type="string" value="." description="[optional] The directory name of your python code. It will inserted to sys.path."/>
+      <Parameter name="MODULENAME" type="string" value="simpleCode" description="Your python module name to import, i.e., your python code file name WITHOUT extension."/>
+      <Parameter name="CLASSNAME" type="string" value="HarkNode" description="Your class name to call in this node."/>
+      <Parameter name="DEBUG" type="bool" value="true" description="Debug option. If true, it prints input list and output list."/>
+    </Node>
+    <Node name="node_Constant_3" type="Constant" x="100" y="240">
+      <Parameter name="VALUE" type="object" value="&lt;Vector&lt;int&gt; 1 2 3 &gt;" description="The value"/>
+    </Node>
+    <Link from="node_Constant_2" output="VALUE" to="node_PyCodeExecutor3_1" input="source2"/>
+    <Link from="node_Constant_1" output="VALUE" to="node_PyCodeExecutor3_1" input="source1"/>
+    <Link from="node_Constant_3" output="VALUE" to="node_PyCodeExecutor3_1" input="vecinput"/>
+    <NetOutput name="mult" node="node_PyCodeExecutor3_1" terminal="mult" object_type="any" description="outputsadded by the user"/>
+    <NetOutput name="add" node="node_PyCodeExecutor3_1" terminal="add" object_type="any" description="outputsadded by the user"/>
+    <NetOutput name="matrix" node="node_PyCodeExecutor3_1" terminal="matrix" object_type="any" description="outputsadded by the user"/>
+  </Network>
+</Document>

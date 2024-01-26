@@ -1,0 +1,50 @@
+#!/usr/bin/env batchflow
+<?xml version="1.0"?>
+<Document>
+  <Network type="subnet" name="MAIN">
+    <Node name="node_PyCodeExecutor3_1" type="PyCodeExecutor3" x="480" y="100">
+      <Parameter name="DIRECTORY_NAME" type="string" value="." description="[optional] The directory name of your python code. It will inserted to sys.path."/>
+      <Parameter name="MODULENAME" type="string" value="testAllTypes" description="Your python module name to import, i.e., your python code file name WITHOUT extension."/>
+      <Parameter name="CLASSNAME" type="string" value="TestAllTypes" description="Your class name to call in this node."/>
+      <Parameter name="DEBUG" type="bool" value="true" description="Debug option. If true, it prints input list and output list."/>
+    </Node>
+    <Node name="node_PyCodeExecutor3_2" type="PyCodeExecutor3" x="100" y="100">
+      <Parameter name="DIRECTORY_NAME" type="string" value="." description="[optional] The directory name of your python code. It will inserted to sys.path."/>
+      <Parameter name="MODULENAME" type="string" value="testAllTypes" description="Your python module name to import, i.e., your python code file name WITHOUT extension."/>
+      <Parameter name="CLASSNAME" type="string" value="GenConsts" description="Your class name to call in this node."/>
+      <Parameter name="DEBUG" type="bool" value="false" description="Debug option. If true, it prints input list and output list."/>
+    </Node>
+    <Link from="node_PyCodeExecutor3_2" output="cint" to="node_PyCodeExecutor3_1" input="int"/>
+    <Link from="node_PyCodeExecutor3_2" output="cfloat" to="node_PyCodeExecutor3_1" input="float"/>
+    <Link from="node_PyCodeExecutor3_2" output="ccomplex" to="node_PyCodeExecutor3_1" input="complex"/>
+    <Link from="node_PyCodeExecutor3_2" output="csource" to="node_PyCodeExecutor3_1" input="source"/>
+    <Link from="node_PyCodeExecutor3_2" output="cvecint" to="node_PyCodeExecutor3_1" input="vecint"/>
+    <Link from="node_PyCodeExecutor3_2" output="cvecfloat" to="node_PyCodeExecutor3_1" input="vecfloat"/>
+    <Link from="node_PyCodeExecutor3_2" output="cveccomplex" to="node_PyCodeExecutor3_1" input="veccomplex"/>
+    <Link from="node_PyCodeExecutor3_2" output="cvecsource" to="node_PyCodeExecutor3_1" input="vecsource"/>
+    <Link from="node_PyCodeExecutor3_2" output="cmatint" to="node_PyCodeExecutor3_1" input="matint"/>
+    <Link from="node_PyCodeExecutor3_2" output="cmatfloat" to="node_PyCodeExecutor3_1" input="matfloat"/>
+    <Link from="node_PyCodeExecutor3_2" output="cmatcomplex" to="node_PyCodeExecutor3_1" input="matcomplex"/>
+    <Link from="node_PyCodeExecutor3_2" output="cmapvecint" to="node_PyCodeExecutor3_1" input="mapvecint"/>
+    <Link from="node_PyCodeExecutor3_2" output="cmapvecfloat" to="node_PyCodeExecutor3_1" input="mapvecfloat"/>
+    <Link from="node_PyCodeExecutor3_2" output="cmapveccomplex" to="node_PyCodeExecutor3_1" input="mapveccomplex"/>
+    <Link from="node_PyCodeExecutor3_2" output="cmapprimfloat" to="node_PyCodeExecutor3_1" input="mapprimfloat"/>
+    <Link from="node_PyCodeExecutor3_2" output="cstring" to="node_PyCodeExecutor3_1" input="string"/>
+    <NetOutput name="xint" node="node_PyCodeExecutor3_1" terminal="xint" object_type="any" description="No description available"/>
+    <NetOutput name="xfloat" node="node_PyCodeExecutor3_1" terminal="xfloat" object_type="any" description="No description available"/>
+    <NetOutput name="xcomplex" node="node_PyCodeExecutor3_1" terminal="xcomplex" object_type="any" description="No description available"/>
+    <NetOutput name="xsource" node="node_PyCodeExecutor3_1" terminal="xsource" object_type="any" description="No description available"/>
+    <NetOutput name="xvecint" node="node_PyCodeExecutor3_1" terminal="xvecint" object_type="any" description="No description available"/>
+    <NetOutput name="xvecfloat" node="node_PyCodeExecutor3_1" terminal="xvecfloat" object_type="any" description="No description available"/>
+    <NetOutput name="xveccomplex" node="node_PyCodeExecutor3_1" terminal="xveccomplex" object_type="any" description="No description available"/>
+    <NetOutput name="xvecsource" node="node_PyCodeExecutor3_1" terminal="xvecsource" object_type="any" description="No description available"/>
+    <NetOutput name="xmatint" node="node_PyCodeExecutor3_1" terminal="xmatint" object_type="any" description="No description available"/>
+    <NetOutput name="xmatfloat" node="node_PyCodeExecutor3_1" terminal="xmatfloat" object_type="any" description="No description available"/>
+    <NetOutput name="xmatcomplex" node="node_PyCodeExecutor3_1" terminal="xmatcomplex" object_type="any" description="No description available"/>
+    <NetOutput name="xmapvecint" node="node_PyCodeExecutor3_1" terminal="xmapvecint" object_type="any" description="No description available"/>
+    <NetOutput name="xmapvecfloat" node="node_PyCodeExecutor3_1" terminal="xmapvecfloat" object_type="any" description="No description available"/>
+    <NetOutput name="xmapveccomplex" node="node_PyCodeExecutor3_1" terminal="xmapveccomplex" object_type="any" description="No description available"/>
+    <NetOutput name="xmapprimfloat" node="node_PyCodeExecutor3_1" terminal="xmapprimfloat" object_type="any" description="Dynamically added outputs"/>
+    <NetOutput name="xstring" node="node_PyCodeExecutor3_1" terminal="xstring" object_type="any" description="Dynamically added outputs"/>
+  </Network>
+</Document>

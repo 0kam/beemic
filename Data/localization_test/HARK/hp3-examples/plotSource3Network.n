@@ -1,0 +1,21 @@
+#!/usr/bin/env batchflow
+<?xml version="1.0"?>
+<Document>
+  <Network type="subnet" name="MAIN">
+    <Node name="node_LOOP0_1" type="LOOP0" x="60" y="90">
+      <Parameter name="FILENAME" type="subnet_param" value="ARG1" description="The filename to load source locations."/>
+    </Node>
+    <NetOutput name="OUTPUT" node="node_LOOP0_1" terminal="OUTPUT" object_type="any" description="Dynamic"/>
+  </Network>
+  <Network type="iterator" name="LOOP0">
+    <Node name="node_LoadSourceLocation_1" type="LoadSourceLocation" x="60" y="90">
+      <Parameter name="FILENAME" type="subnet_param" value="FILENAME" description="The filename to load source locations."/>
+    </Node>
+    <Node name="node_plotSource3_1" type="plotSource3" x="390" y="90">
+    </Node>
+    <Link from="node_LoadSourceLocation_1" output="SOURCES" to="node_plotSource3_1" input="SOURCES"/>
+    <NetCondition name="CONDITION" node="node_LoadSourceLocation_1" terminal="NOT_EOF"/>
+    <NetOutput name="OUTPUT" node="node_plotSource3_1" terminal="OUTPUT" object_type="any" description=""/>
+  </Network>
+  <Parameter name="ARG1" type="" value=""/>
+</Document>
